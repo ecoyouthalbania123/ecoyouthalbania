@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECOYouth Albania - Mbrojtja e Mjedisit</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f9f5; color: #333; line-height: 1.6; }
+
+/* ===== NAVBAR ===== */
+nav {
+    background: #2d7a2d;
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-icon { font-size: 30px; }
+.nav-links { display: flex; gap: 30px; list-style: none; }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: #90ee90; }
+.nav-btn {
+    background: white;
+    color: #2d7a2d;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.nav-btn:hover { background: #90ee90; }
+
+/* ===== HERO ===== */
+.hero {
+    background: linear-gradient(135deg, #1a5c1a, #2d7a2d, #4CAF50);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="50" cy="80" r="2.5" fill="rgba(255,255,255,0.06)"/><circle cx="90" cy="90" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: 200px 200px;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+.hero h1 span { color: #90ee90; }
+.hero-slogan {
+    font-size: 22px;
+    font-style: italic;
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+.hero-btns { display: flex; gap: 15px; justify-content: center; margin-bottom: 50px; }
+.btn {
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn-primary {
+    background: white;
+    color: #1a5c1a;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.6);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.15); border-color: white; }
+.hero-stats {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-number {
+    font-size: 38px;
+    font-weight: 800;
+    display: block;
+    color: #90ee90;
+}
+.stat-label { font-size: 14px; opacity: 0.9; }
+
+/* ===== SECTIONS ===== */
+.section { padding: 80px 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-tag {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2d7a2d;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+.section-title {
+    font-size: 36px;
+    color: #1a5c1a;
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+.section-desc { color: #666; font-size: 17px; max-width: 600px; margin: 0 auto; }
+
+/* ===== ABOUT ===== */
+.about-section { background: white; }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.about-image {
+    background: linear-gradient(135deg, #4CAF50, #2d7a2d);
+    height: 400px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+.about-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.1));
+}
+.about-text h3 {
+    font-size: 28px;
+    color: #1a5c1a;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.about-text p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+/* ===== MISSION ===== */
+.mission-section { background: #f0f7f0; }
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+.mission-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    transition: all 0.4s;
+    border-top: 4px solid #2d7a2d;
+}
+.mission-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+.mission-icon { font-size: 45px; margin-bottom: 18px; }
+.mission-title {
+    font-size: 18px;
+    color: #1a5c1a;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.mission-desc { font-size: 14px; color: #666; line-height: 1.6; }
+
+/* ===== ACTIVITIES ===== */
+.activities-section { background: white; }
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.activity-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+.activity-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.activity-img {
+    height: 200px;
+    background: linear-gradient(135deg, #2d7a2d, #4CAF50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    position: relative;
+}
+.activity-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(transparent, white);
+}
+.activity-body { padding: 25px 30px 30px; flex: 1; }
+.activity-tag {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2d7a2d;
+    padding: 5px 14px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.activity-title {
+    font-size: 20px;
+    color: #1a5c1a;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.activity-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ===== TEAM ===== */
+.team-section { background: #f0f7f0; }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.team-card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    transition: all 0.4s;
+}
+.team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+.team-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2d7a2d, #4CAF50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+}
+.team-name {
+    font-size: 18px;
+    color: #1a5c1a;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.team-role {
+    font-size: 14px;
+    color: #2d7a2d;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.team-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ===== VOLUNTEER SECTION ===== */
+.volunteer-section { background: white; }
+.volunteer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+.volunteer-info h3 {
+    font-size: 28px;
+    color: #1a5c1a;
+    margin-bottom: 20px;
+}
+.volunteer-info p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+.volunteer-benefits {
+    list-style: none;
+}
+.volunteer-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding: 12px 16px;
+    background: #f5f9f5;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #444;
+}
+.volunteer-benefits li span { font-size: 20px; }
+.volunteer-form {
+    background: #f5f9f5;
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #e0f0e0;
+}
+.volunteer-form h3 {
+    font-size: 24px;
+    color: #1a5c1a;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.volunteer-form .form-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+.form-group { margin-bottom: 18px; }
+.form-group label {
+    display: block;
+    color: #1a5c1a;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+    background: white;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2d7a2d;
+}
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2d7a2d, #4CAF50);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45,122,45,0.3);
+}
+
+/* ===== CONTACT ===== */
+.contact-section { background: #f0f7f0; }
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+.contact-info h3 {
+    font-size: 28px;
+    color: #1a5c1a;
+    margin-bottom: 20px;
+}
+.contact-info p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 14px 18px;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.contact-item:hover { background: #e8f5e9; transform: translateX(5px); }
+.contact-icon { font-size: 22px; }
+.contact-text strong {
+    display: block;
+    color: #1a5c1a;
+    font-size: 15px;
+}
+.contact-text span { color: #666; font-size: 14px; }
+.contact-form-box {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+.contact-form-box h3 {
+    font-size: 22px;
+    color: #1a5c1a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+    background: linear-gradient(135deg, #1a5c1a, #2d7a2d);
+    padding: 70px 20px;
+    text-align: center;
+    color: white;
+}
+.cta-section h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+.cta-section p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 50px 20px 25px;
+}
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+.footer-brand .logo { color: #90ee90; margin-bottom: 15px; }
+.footer-brand p {
+    color: #aaa;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.footer-socials { display: flex; gap: 12px; }
+.footer-social {
+    width: 40px;
+    height: 40px;
+    background: #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+.footer-social:hover { background: #2d7a2d; transform: translateY(-3px); }
+.footer-col h4 {
+    color: #90ee90;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+.footer-col a:hover { color: #90ee90; }
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 25px;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.footer-bottom p { color: #777; font-size: 13px; }
+
+/* ===== SUCCESS MESSAGE ===== */
+.success-message {
+    display: none;
+    background: #d4edda;
+    color: #155724;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #c3e6cb;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .about-grid, .volunteer-grid, .contact-grid { grid-template-columns: 1fr; }
+    .mission-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 36px; }
+    .hero-stats { gap: 30px; }
+    .mission-grid, .activities-grid, .team-grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-title { font-size: 28px; }
+    .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span class="logo-icon">🌱</span>
+            ECOYouth Albania
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">Kush Jemi</a></li>
+            <li><a href="#mission">Misioni</a></li>
+            <li><a href="#activities">Aktivitetet</a></li>
+            <li><a href="#team">Ekipi</a></li>
+            <li><a href="#volunteer">Vullnetar</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+        <a href="#volunteer" class="nav-btn">Bëhu Vullnetar</a>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>ECO<span>Youth</span> Albania</h1>
+        <p class="hero-slogan">"Bashkë për një Shqipëri më të pastër dhe më të gjelbër!"</p>
+        <div class="hero-btns">
+            <a href="#activities" class="btn btn-primary">Shiko Aktivitetet</a>
+            <a href="#volunteer" class="btn btn-secondary">Bëhu Vullnetar</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Vullnetarë</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Aktivitete</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10K+</span>
+                <span class="stat-label">Pemë të Mbjella</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Shkolla të Përfshira</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about-section section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Rreth Nesh</span>
+            <h2 class="section-title">Kush Jemi Ne?</h2>
+            <p class="section-desc">Një grup të rinjsh që punojmë për një të ardhme më të mirë.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">🌍</div>
+            <div class="about-text">
+                <h3>ECOYouth Albania</h3>
+                <p>Ne jemi një grup të rinjsh që punojmë për mbrojtjen e mjedisit, ndërgjegjësimin e komunitetit dhe krijimin e një Shqipërie më të pastër dhe më të gjelbër.</p>
+                <p>Që nga themelimi ynë, kemi organizuar dhjetra aktivitete pastrimi, kemi mbjellë mijëra pemë dhe kemi edukuar qindra nxënës për rëndësinë e mbrojtjes së natyrës.</p>
+                <p>Besojmë se çdo veprim i vogël ka një ndikim të madh. Bashkohu me ne dhe bëhu pjesë e ndryshimit!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MISSION ===== -->
+<section class="mission-section section" id="mission">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Misioni Ynë</span>
+            <h2 class="section-title">Çfarë Synojmë të Arrijmë</h2>
+            <p class="section-desc">Përkushtimi ynë ndaj mjedisit manifestohet përmes këtyre shtyllave kryesore.</p>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <div class="mission-icon">♻️</div>
+                <div class="mission-title">Të Promovojmë Riciklimin</div>
+                <div class="mission-desc">Edukojmë komunitetin për rëndësinë e riciklimit dhe vendosim koshat e riciklimit në shkolla dhe lagje.</div>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">🧹</div>
+                <div class="mission-title">Të Organizojmë Aktivitete Pastrimi</div>
+                <div class="mission-desc">Pastrojmë parqe, plazhe, rrugë dhe zona publike për një ambient më të pastër për të gjithë.</div>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">🌳</div>
+                <div class="mission-title">Të Mbjellim Pemë</div>
+                <div class="mission-desc">Mbjellim pemë për të luftuar ndryshimet klimatike, për të gjelbëruar qytetet dhe për të mbrojtur natyrën.</div>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">📚</div>
+                <div class="mission-title">Të Edukojmë Të Rinjtë</div>
+                <div class="mission-desc">Organizojmë punëtori dhe sesione edukative për të ndërgjegjësuar të rinjtë për rëndësinë e mjedisit.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ACTIVITIES ===== -->
+<section class="activities-section section" id="activities">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Aktivitetet Tona</span>
+            <h2 class="section-title">Veprimi në Terren</h2>
+            <p class="section-desc">Zbuloni aktivitetet konkrete që realizojmë çdo muaj.</p>
+        </div>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-img">🧹</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Fushatë</span>
+                    <div class="activity-title">Pastrim Parqesh dhe Lagjesh</div>
+                    <div class="activity-desc">Organizojmë fushata pastrimi në parqe, lagje dhe zona publike. Vullnetarët tanë mblidhen çdo fundjavë për të pastruar ambientin dhe për të ndërgjegjësuar banorët për rëndësinë e mbajtjes së qytetit të pastër.</div>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-img">🌳</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Natyrë</span>
+                    <div class="activity-title">Mbjellje Pemësh</div>
+                    <div class="activity-desc">Mbjellim pemë në zona urbane dhe rurale për të luftuar ndryshimet klimatike. Deri tani kemi mbjellë mbi 10,000 pemë në të gjithë Shqipërinë, duke kontribuar për një ajër më të pastër.</div>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-img">📢</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Sensibilizim</span>
+                    <div class="activity-title">Fushata Sensibilizuese</div>
+                    <div class="activity-desc">Organizojmë fushata ndërgjegjësuese në shkolla dhe komunitete për rëndësinë e mbrojtjes së mjedisit, kursimin e energjisë dhe reduktimin e ndotjes.</div>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-img">♻️</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Edukim</span>
+                    <div class="activity-title">Projekte Riciklimi në Shkolla</div>
+                    <div class="activity-desc">Vendosim koshat e riciklimit në shkolla dhe organizojmë sesione edukative për nxënësit mbi ndarjen e mbeturinave, riciklimin dhe rëndësinë e reduktimit të mbeturinave.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="team-section section" id="team">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Ekipi Ynë</span>
+            <h2 class="section-title">Ekipi i ECOYouth Albania</h2>
+            <p class="section-desc">Një ekip i përkushtuar që punon për një Shqipëri më të gjelbër.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">VD</div>
+                <div class="team-name">Vilson Dega</div>
+                <div class="team-role">Lider i Organizatës</div>
+                <div class="team-desc">Koordinon ekipin, organizon aktivitetet dhe merr vendimet kryesore për zhvillimin e organizatës.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">FT</div>
+                <div class="team-name">Fabiola Toska</div>
+                <div class="team-role">Menaxhere e Marrëdhënieve Publike</div>
+                <div class="team-desc">Merret me komunikimin me publikun, postimet dhe promovimin e organizatës në media.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">GN</div>
+                <div class="team-name">Gresilda Ndoj</div>
+                <div class="team-role">Koordinatore e Projekteve</div>
+                <div class="team-desc">Planifikon aktivitetet dhe ndjek realizimin e projekteve ekologjike nga fillimi deri në fund.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">KZ</div>
+                <div class="team-name">Kejsi Zela</div>
+                <div class="team-role">Menaxhere e Mediave Sociale</div>
+                <div class="team-desc">Administron Instagramin, TikTok-un dhe postimet online të organizatës për të arritur sa më shumë njerëz.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">RI</div>
+                <div class="team-name">Roel Ibro</div>
+                <div class="team-role">Përgjegjës për Teknologjinë dhe Website-in</div>
+                <div class="team-desc">Kujdeset për website-in, dizajnin dhe pjesën teknike të prezencës digjitale të organizatës.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">OT</div>
+                <div class="team-name">Orkida Tuti</div>
+                <div class="team-role">Koordinatore e Eventeve</div>
+                <div class="team-desc">Organizon evente, takime dhe aktivitete me komunitetin për të rritur ndërgjegjësimin mjedisor.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">SB</div>
+                <div class="team-name">Sandokan Bulgareci</div>
+                <div class="team-role">Përgjegjës për Financat dhe Donacionet</div>
+                <div class="team-desc">Menaxhon fondet, donacionet dhe bashkëpunimet financiare për të mbështetur projektet tona.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VOLUNTEER REGISTRATION ===== -->
+<section class="volunteer-section section" id="volunteer">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Bëhu Vullnetar</span>
+            <h2 class="section-title">Regjistrohu si Vullnetar</h2>
+            <p class="section-desc">Plotëso formularin më poshtë dhe bëhu pjesë e ekipit tonë ekologjik!</p>
+        </div>
+        <div class="volunteer-grid">
+            <div class="volunteer-info">
+                <h3>Pse të Bëhesh Vullnetar?</h3>
+                <p> Duke u bërë vullnetar me ECOYouth Albania, ti kontribuon drejtpërdrejt për mbrojtjen e mjedisit në Shqipëri. Çdo orë vullnetare ndihmon në pastrimin e zonave tona, mbjelljen e pemëve dhe edukimin e komunitetit.</p>
+                <ul class="volunteer-benefits">
+                    <li><span>🌱</span> Kontribuo për mjedisin</li>
+                    <li><span>🤝</span> Njih njerëz të rinj me të njëjtin interes</li>
+                    <li><span>📜</span> Merr certifikatë vullnetari</li>
+                    <li><span>💡</span> Mëso rreth ekologjisë dhe qëndrueshmërisë</li>
+                    <li><span>⭐</span> Përvojë e vlefshme për CV-në tënde</li>
+                    <li><span>🎉</span> Pjesëmarrje në evente ekskluzive</li>
+                </ul>
+            </div>
+            <div class="volunteer-form">
+                <h3>Formulari i Regjistrimit</h3>
+                <p class="form-subtitle">Plotësoni të dhënat tuaja më poshtë</p>
+                <div class="success-message" id="volunteerSuccess">
+                    ✅ Regjistrimi u krye me sukses! Do t'ju kontaktojmë së shpejti.
+                </div>
+                <form id="volunteerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Emri *</label>
+                            <input type="text" name="emri" placeholder="Emri juaj" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mbiemri *</label>
+                            <input type="text" name="mbiemri" placeholder="Mbiemri juaj" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Numri i Telefonit *</label>
+                            <input type="tel" name="telefon" placeholder="+355 69 XXX XXXX" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Mosha *</label>
+                            <input type="number" name="mosha" placeholder="Vendosni moshën" min="14" max="99" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Qyteti *</label>
+                            <select name="qyteti" required>
+                                <option value="">Zgjidh qytetin</option>
+                                <option value="Tiranë">Tiranë</option>
+                                <option value="Durrës">Durrës</option>
+                                <option value="Vlorë">Vlorë</option>
+                                <option value="Shkodër">Shkodër</option>
+                                <option value="Korçë">Korçë</option>
+                                <option value="Fier">Fier</option>
+                                <option value="Elbasan">Elbasan</option>
+                                <option value="Berat">Berat</option>
+                                <option value="Gjirokastër">Gjirokastër</option>
+                                <option value="Tjetër">Tjetër</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Aktiviteti që të intereson më shumë *</label>
+                        <select name="aktiviteti" required>
+                            <option value="">Zgjidh aktivitetin</option>
+                            <option value="Pastrim">Pastrim Parqesh dhe Lagjesh</option>
+                            <option value="Mbjellje">Mbjellje Pemësh</option>
+                            <option value="Sensibilizim">Fushata Sensibilizuese</option>
+                            <option value="Riciklim">Projekte Riciklimi në Shkolla</option>
+                            <option value="Çdo aktivitet">Çdo aktivitet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ditët e javës kur je i disponueshëm</label>
+                        <select name="dite">
+                            <option value="">Zgjidh ditët</option>
+                            <option value="E Hënë">E Hënë</option>
+                            <option value="E Martë">E Martë</option>
+                            <option value="E Mërkurë">E Mërkurë</option>
+                            <option value="E Enjte">E Enjte</option>
+                            <option value="E Premte">E Premte</option>
+                            <option value="E Shtunë">E Shtunë</option>
+                            <option value="E Diel">E Diel</option>
+                            <option value="Fundjava">Fundjava</option>
+                            <option value="Çdo ditë">Çdo ditë</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Pse dëshiron të bëhesh vullnetar? (Opsionale)</label>
+                        <textarea name="arsyeja" placeholder="Shkruani një mesazh të shkurtër..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Regjistrohu si Vullnetar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact-section section" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Na Kontaktoni</span>
+            <h2 class="section-title">Kontakti</h2>
+            <p class="section-desc">Dëshiron të na shkruash ose të na mbështesësh? Na kontakto!</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Na Gjeni Këtu</h3>
+                <p>Jemi gjithmonë të hapur për bashkëpunime, ide të reja dhe vullnetarë që duan të kontribuojnë për mjedisin.</p>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-text">
+                        <strong>Email</strong>
+                        <span>ecoyouthalbania@gmail.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-text">
+                        <strong>Vendndodhja</strong>
+                        <span>Tiranë, Shqipëri</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🌐</span>
+                    <div class="contact-text">
+                        <strong>Rrjetet Sociale</strong>
+                        <span>Instagram, TikTok, Facebook</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🤝</span>
+                    <div class="contact-text">
+                        <strong>Bashkëpunime</strong>
+                        <span>Hapur për partneritete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-box">
+                <h3>Dërgo një Mesazh</h3>
+                <div class="success-message" id="contactSuccess">
+                    ✅ Mesazhi u dërgua me sukses! Do t'ju përgjigjemi së shpejti.
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Emri juaj</label>
+                        <input type="text" name="emri" placeholder="Shkruani emrin tuaj" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Shkruani email-in tuaj" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tema</label>
+                        <input type="text" name="tema" placeholder="Për çfarë doni të na shkruani?">
+                    </div>
+                    <div class="form-group">
+                        <label>Mesazhi</label>
+                        <textarea name="mesazhi" placeholder="Shkruani mesazhin tuaj këtu..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Dërgo Mesazhin</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+    <h2>Bëhu Pjesë e Ndryshimit!</h2>
+    <p>Bashkohu me ECOYouth Albania dhe kontribuo për një mjedis më të pastër për të gjithë.</p>
+    <div class="hero-btns">
+        <a href="#volunteer" class="btn btn-primary">Regjistrohu si Vullnetar</a>
+        <a href="#contact" class="btn btn-secondary">Na Kontakto</a>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo">🌱 ECOYouth Albania</div>
+            <p>OJQ e krijuar nga të rinjtë për mbrojtjen e mjedisit, ndërgjegjësimin e komunitetit dhe krijimin e një Shqipërie më të pastër dhe më të gjelbër.</p>
+            <div class="footer-socials">
+                <a href="#" class="footer-social" title="Facebook">📘</a>
+                <a href="#" class="footer-social" title="Instagram">📸</a>
+                <a href="#" class="footer-social" title="TikTok">🎵</a>
+                <a href="#" class="footer-social" title="YouTube">▶️</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Navigim</h4>
+            <ul>
+                <li><a href="#about">Kush Jemi</a></li>
+                <li><a href="#mission">Misioni</a></li>
+                <li><a href="#activities">Aktivitetet</a></li>
+                <li><a href="#team">Ekipi</a></li>
+                <li><a href="#volunteer">Vullnetar</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Kontakt</h4>
+            <ul>
+                <li><a href="mailto:ecoyouthalbania@gmail.com">ecoyouthalbania@gmail.com</a></li>
+                <li><a href="#">Tiranë, Shqipëri</a></li>
+                <li><a href="#">Instagram: @ecoyouthalbania</a></li>
+                <li><a href="#">TikTok: @ecoyouthalbania</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 ECOYouth Albania. Të gjitha të drejtat e rezervuara.</p>
+        <p>"Bashkë për një Shqipëri më të pastër dhe më të gjelbër!"</p>
+    </div>
+</footer>
+
+<script>
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ===== NAVBAR SCROLL EFFECT =====
+window.addEventListener('scroll', function() {
+    var nav = document.querySelector('nav');
+    if(window.scrollY > 80) {
+        nav.style.background = '#1a5c1a';
+        nav.style.padding = '12px 30px';
+    } else {
+        nav.style.background = '#2d7a2d';
+        nav.style.padding = '15px 30px';
+    }
+});
+
+// ===== FADE-IN ANIMATIONS =====
+var fadeElements = document.querySelectorAll('.mission-card, .activity-card, .team-card');
+var fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if(entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+fadeElements.forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(25px)';
+    el.style.transition = 'all 0.6s ease';
+    fadeObserver.observe(el);
+});
+
+// ===== STAT NUMBERS ANIMATION =====
+var statNums = document.querySelectorAll('.stat-number');
+var statObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if(entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+        }
+    });
+}, { threshold: 0.3 });
+
+statNums.forEach(function(num) {
+    num.style.opacity = '0';
+    num.style.transition = 'opacity 1s ease';
+    statObserver.observe(num);
+});
+
+// ===== VOLUNTEER FORM SUBMIT =====
+document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Marrim te dhenat nga formulari
+    var formData = new FormData(this);
+    var data = {};
+    formData.forEach(function(value, key) {
+        data[key] = value;
+    });
+
+    // Krijojme mesazhin per email
+    var subject = "Regjistrim i Ri Vullnetar - " + data.emri + " " + data.mbiemri;
+    var body = "=== REGJISTRIM I RI VULLNETAR ===\n\n" +
+        "Emri: " + data.emri + "\n" +
+        "Mbiemri: " + data.mbiemri + "\n" +
+        "Email: " + data.email + "\n" +
+        "Telefon: " + data.telefon + "\n" +
+        "Mosha: " + data.mosha + " vjeç\n" +
+        "Qyteti: " + data.qyteti + "\n" +
+        "Aktiviteti i preferuar: " + data.aktiviteti + "\n" +
+        "Ditët e disponueshme: " + (data.dite || "Nuk është zgjedhur") + "\n" +
+        "Arsyeja: " + (data.arsyeja || "Nuk është shkruar") + "\n\n" +
+        "=== Fundi i regjistrimit ===";
+
+    // Dergojme email permes mailto
+    var mailtoLink = "mailto:ecoyouthalbania@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    window.location.href = mailtoLink;
+
+    // Shfaqim mesazhin e suksesit
+    document.getElementById('volunteerSuccess').style.display = 'block';
+    this.reset();
+
+    // Fshijme mesazhin pas 5 sekondash
+    setTimeout(function() {
+        document.getElementById('volunteerSuccess').style.display = 'none';
+    }, 5000);
+});
+
+// ===== CONTACT FORM SUBMIT =====
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    var data = {};
+    formData.forEach(function(value, key) {
+        data[key] = value;
+    });
+
+    var subject = "Mesazh nga Website - " + data.emri;
+    var body = "=== MESAZH I RI NGA WEBSITE ===\n\n" +
+        "Emri: " + data.emri + "\n" +
+        "Email: " + data.email + "\n" +
+        "Tema: " + (data.tema || "Nuk ka temë") + "\n\n" +
+        "Mesazhi:\n" + data.mesazhi + "\n\n" +
+        "=== Fundi i mesazhit ===";
+
+    var mailtoLink = "mailto:ecoyouthalbania@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    window.location.href = mailtoLink;
+
+    document.getElementById('contactSuccess').style.display = 'block';
+    this.reset();
+
+    setTimeout(function() {
+        document.getElementById('contactSuccess').style.display = 'none';
+    }, 5000);
+});
+</script>
+
+</body>
+</html>
